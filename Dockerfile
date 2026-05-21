@@ -1,5 +1,5 @@
-# Use the official Microsoft Playwright image which includes Node.js and all browser dependencies pre-installed
-FROM mcr.microsoft.com/playwright:v1.60.0-noble
+# Use a lightweight official Node.js Alpine image
+FROM node:20-alpine
 
 # Set working directory inside the container
 WORKDIR /app
@@ -7,8 +7,8 @@ WORKDIR /app
 # Copy dependency specifications
 COPY package*.json ./
 
-# Install dependencies (ignoring scripts to avoid running playwright install again)
-RUN npm ci --ignore-scripts
+# Install only production dependencies
+RUN npm ci --only=production
 
 # Copy the rest of the application code
 COPY . .

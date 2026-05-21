@@ -1,4 +1,4 @@
-const scraperService = require('../services/scraperService');
+const attendanceService = require('../services/attendanceService');
 const analyticsService = require('../services/analyticsService');
 
 const fetchAttendance = async (req, res, next) => {
@@ -28,7 +28,7 @@ const fetchAttendance = async (req, res, next) => {
         }
 
         // We fetch and parse the data directly per-request. No credentials stored.
-        const rawData = await scraperService.scrapeAttendance(registerNo, password);
+        const rawData = await attendanceService.scrapeAttendance(registerNo, password);
         const processedData = analyticsService.calculateAnalytics(rawData);
 
         res.json({
