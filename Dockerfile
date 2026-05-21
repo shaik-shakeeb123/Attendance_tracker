@@ -1,5 +1,5 @@
 # Use the official Microsoft Playwright image which includes Node.js and all browser dependencies pre-installed
-FROM mcr.microsoft.com/playwright:v1.49.0-noble
+FROM mcr.microsoft.com/playwright:v1.60.0-noble
 
 # Set working directory inside the container
 WORKDIR /app
